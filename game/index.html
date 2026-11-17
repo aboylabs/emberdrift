@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="data:,">
+<title>Emberdrift — Ngengat Lentera</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="wrap">
+  <canvas id="game" width="960" height="600"></canvas>
+
+  <!-- HUD: hanya tampil saat playing / upgrade / paused -->
+  <div id="hud" class="hidden">
+    <div id="hud-top">
+      <div class="hud-box" id="flame-box">
+        <span class="hud-label">API</span>
+        <div id="flame-bar"><div id="flame-fill"></div></div>
+        <span id="flame-text">100 / 100</span>
+      </div>
+      <div class="hud-box">
+        <span class="hud-label">SKOR</span>
+        <span id="score" class="hud-value">0</span>
+        <span class="hud-sub">Terbaik <span id="best">0</span></span>
+      </div>
+      <div class="hud-box">
+        <span class="hud-label">WAVE</span>
+        <span id="wave" class="hud-value">1 / 10</span>
+        <span class="hud-sub">Bara <span id="embers">0 / 10</span></span>
+      </div>
+      <div class="hud-box">
+        <span class="hud-label">NYAWA</span>
+        <span id="lives" class="hud-value hearts">♥♥♥</span>
+        <span class="hud-sub">Combo <span id="combo">—</span></span>
+      </div>
+      <div class="hud-box">
+        <span class="hud-label">DASH</span>
+        <span id="dash" class="hud-value">SIAP</span>
+        <span class="hud-sub">Space / klik</span>
+      </div>
+    </div>
+  </div>
+
+  <div id="banner" class="hidden"></div>
+
+  <!-- Layar judul -->
+  <div id="screen-title" class="screen">
+    <h1>EMBERDRIFT</h1>
+    <p class="tagline">Kamu adalah <b>Pijar</b>, seekor ngengat lentera di ladang bara yang gelap.</p>
+    <p class="rules">Api terus meredup — kumpulkan <span class="ember-word">bara</span> untuk mengisi api dan skor.<br>
+    Hindari <span class="wraith-word">wraith abu</span>. Lewati <b>10 wave</b> untuk menang.<br>
+    Api habis = kehilangan nyawa. 3 nyawa, lalu game over.</p>
+    <div class="controls">
+      <div><b>Mouse / WASD</b> — terbang</div>
+      <div><b>Space / klik</b> — dash (kebal sebentar)</div>
+      <div><b>P</b> — jeda &nbsp;·&nbsp; <b>M</b> — suara &nbsp;·&nbsp; <b>Enter</b> — mulai</div>
+    </div>
+    <button id="btn-start" class="btn-big" type="button">MULAI TERBANG</button>
+    <p class="best-line">Skor terbaik: <span id="title-best">0</span></p>
+  </div>
+
+  <!-- Layar upgrade -->
+  <div id="screen-upgrade" class="screen hidden">
+    <h2>WAVE SELESAI!</h2>
+    <p class="tagline">Pilih satu peningkatan — klik kartu atau tekan 1 / 2 / 3.</p>
+    <div id="upgrade-cards"></div>
+  </div>
+
+  <!-- Layar jeda -->
+  <div id="screen-pause" class="screen hidden">
+    <h2>JEDA</h2>
+    <p class="tagline">Api Pijar menunggu. Tekan P untuk lanjut.</p>
+    <button id="btn-resume" class="btn-big" type="button">LANJUT</button>
+    <button id="btn-title" class="btn-small" type="button">Kembali ke Judul</button>
+  </div>
+
+  <!-- Layar game over -->
+  <div id="screen-over" class="screen hidden">
+    <h2 class="danger">API PADAM</h2>
+    <p class="tagline">Pijar kehilangan cahayanya di ladang bara…</p>
+    <p class="score-line">Skor: <span id="over-score">0</span></p>
+    <p class="best-line">Terbaik: <span id="over-best">0</span></p>
+    <button id="btn-restart-over" class="btn-big" type="button">COBA LAGI (Enter)</button>
+  </div>
+
+  <!-- Layar kemenangan -->
+  <div id="screen-win" class="screen hidden">
+    <h2 class="gold">LADANG BARA DITERANGI!</h2>
+    <p class="tagline">Pijar melewati 10 wave — cahaya lentera menyala kembali.</p>
+    <p class="score-line">Skor akhir: <span id="win-score">0</span></p>
+    <p class="best-line">Terbaik: <span id="win-best">0</span></p>
+    <button id="btn-restart-win" class="btn-big" type="button">MAIN LAGI (Enter)</button>
+  </div>
+
+  <button id="btn-mute" class="btn-mute" type="button">🔊 Suara</button>
+</div>
+
+<script src="js/util.js"></script>
+<script src="js/audio.js"></script>
+<script src="js/fx.js"></script>
+<script src="js/input.js"></script>
+<script src="js/player.js"></script>
+<script src="js/embers.js"></script>
+<script src="js/enemies.js"></script>
+<script src="js/waves.js"></script>
+<script src="js/upgrades.js"></script>
+<script src="js/hud.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
